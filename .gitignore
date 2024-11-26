@@ -1,0 +1,29 @@
+# Ignorar a pasta "_old"
+_old/
+
+# Ignorar arquivos temporários do VS Code
+.vscode/
+
+# Ignorar arquivos de cache do PHP
+*.cache
+*.log
+
+# Ignorar dependências do composer (se estiver usando)
+vendor/
+
+# Ignorar arquivos temporários do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de build ou de compilação
+build/
+dist/
+
+# Ignorar arquivos de ambiente de desenvolvimento
+.env
+
+# Ignorar pastas de dependências do npm (se estiver usando)
+node_modules/
+
+# Ignorar arquivos de backup do editor de código
+*~

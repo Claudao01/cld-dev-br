@@ -1,0 +1,257 @@
+:root {
+    --text-light: #212121; /* Raisin black */
+    --text-dark: #F8F8FF; /* Ghost white */
+    --background-light: #F8F8FF; /* Ghost white */
+    --background-dark: #212121; /* Raisin black */
+    --details: #bada55;
+    --highlight: #8bc34a;
+}
+
+body.light-mode {
+    color: var(--text-light);
+    background-color: var(--background-light);
+}
+
+body.dark-mode {
+    color: var(--text-dark);
+    background-color: var(--background-dark);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente os itens */
+    padding: 10px 20px;
+    background-color: transparent; /* Torna o fundo do header transparente */
+    border-bottom: 1px solid var(--highlight);
+}
+
+.language-switcher button {
+    border: none;
+    background: none;
+    font-size: 16px; /* Definindo tamanho fixo das bandeiras */
+    cursor: pointer;
+    transition: opacity 0.3s;
+    padding: 0;
+    opacity: 0.5; /* Opacidade de 50% por padrão */
+}
+
+/* Quando o mouse passa por cima das bandeiras */
+.language-switcher button:hover {
+    opacity: 0.75; /* Aumenta para 75% quando "hover" em bandeira não selecionada */
+}
+
+/* Quando o idioma está selecionado */
+.language-switcher button.selected {
+    opacity: 1; /* 100% de opacidade para a bandeira selecionada */
+}
+
+/* Ajustes do tema */
+body.light-mode .language-switcher button {
+    color: var(--text-light);  /* Cor das bandeiras no tema claro */
+}
+
+body.dark-mode .language-switcher button {
+    color: var(--text-dark);  /* Cor das bandeiras no tema escuro */
+}
+
+.language-switcher .flag-icon {
+    max-width: 16px;  /* Diminuindo o tamanho das bandeiras */
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.language-switcher .flag-icon:active {
+    opacity: 1;
+}
+
+.language-switcher .tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0s 0.3s;
+}
+
+.language-switcher button:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.theme-btn {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.construction-container {
+    text-align: center;
+}
+
+.logo-img {
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: transparent; /* Fundo do footer transparente */
+    border-top: 1px solid var(--highlight);
+}
+
+.footer p {
+    font-size: 14px;
+    color: var(--text-light);  /* Cor padrão para o texto no footer */
+}
+
+/* Estilo do texto no footer no modo dark */
+body.dark-mode .footer p {
+    color: var(--text-dark); /* Cor do texto no footer no modo dark */
+}
+
+.footer .link {
+    color: var(--highlight);
+    text-decoration: none;
+}
+
+.footer .link:hover {
+    text-decoration: underline;
+}
+
+/* Telas maiores (largura acima de 1366px) */
+@media (min-width: 1366px) and (min-height: 768px) {
+    .content {
+        flex-direction: row; /* Organiza a imagem e o texto em linha */
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+    }
+
+    .construction-container {
+        display: flex;
+        flex-direction: row;  /* Ajusta para alinhamento horizontal */
+        align-items: center;  /* Centraliza verticalmente os itens */
+        gap: 20px;  /* Espaçamento entre a imagem e o texto */
+    }
+
+    .logo-img {
+        max-width: 300px; /* Aumenta o tamanho da imagem */
+    }
+
+    .logo-text {
+        font-size: 40px; /* Ajusta o tamanho da fonte do texto */
+    }
+}
+
+/* Telas menores (celulares e tablets) */
+@media (max-width: 768px) {
+    body {
+        display: block; /* Organiza a tela para um layout em coluna */
+    }
+
+    .header {
+        position: fixed; /* Fixar os botões do header */
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--background-light); /* Fundo branco ou claro */
+        padding: 10px 20px;
+        z-index: 1000;
+    }
+
+    .content {
+        flex-direction: column; /* Organiza imagem e texto em coluna */
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 60px; /* Para não sobrepor o cabeçalho */
+        text-align: center;
+    }
+
+    .construction-container {
+        margin-bottom: 20px;
+    }
+
+    .logo-img {
+        max-width: 200px; /* Ajusta o tamanho da imagem */
+        margin-bottom: 10px;
+    }
+
+    .logo-text {
+        font-size: 24px; /* Ajusta o tamanho do texto */
+    }
+
+    /* Ajuste para a parte inferior (footer) em telas menores */
+    .footer {
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    .footer p {
+        font-size: 12px; /* Ajuste do texto no footer */
+    }
+
+    .footer .link {
+        font-size: 12px; /* Tamanho da fonte no footer */
+    }
+
+    /* Previne a barra de rolagem em dispositivos móveis */
+    body, html {
+        overflow-x: hidden; /* Impede a rolagem horizontal */
+        min-height: 100vh; /* Garante que a tela ocupe 100% da altura */
+    }
+}
+
+/* Para dispositivos ainda menores (ex. smartphones em modo retrato) */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px; /* Ajusta o padding */
+    }
+
+    .logo-img {
+        max-width: 150px; /* Diminui o tamanho da imagem */
+    }
+
+    .logo-text {
+        font-size: 20px; /* Diminui o tamanho do texto */
+    }
+
+    .footer {
+        font-size: 10px; /* Ajusta o tamanho da fonte no footer */
+    }
+}
