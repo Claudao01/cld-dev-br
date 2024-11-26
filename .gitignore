@@ -1,5 +1,10 @@
-# Ignorar a pasta "_old"
+# Ignorar a pasta "_old" e "_log"
 _old/
+_log/
+
+# Ignorar arquivos do Git
+.gitignore
+.gitattributes
 
 # Ignorar arquivos temporários do VS Code
 .vscode/
@@ -27,3 +32,7 @@ node_modules/
 
 # Ignorar arquivos de backup do editor de código
 *~
+
+# Ignorar arquivos de script e compactados
+*.zip
+*.ps1

@@ -7,6 +7,11 @@
     --highlight: #8bc34a;
 }
 
+body, html {
+    height: 100%; /* Garante que o body ocupe 100% da altura */
+    margin: 0;
+}
+
 body.light-mode {
     color: var(--text-light);
     background-color: var(--background-light);
@@ -31,10 +36,19 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Centraliza verticalmente os itens */
+    align-items: center;
     padding: 10px 20px;
-    background-color: transparent; /* Torna o fundo do header transparente */
     border-bottom: 1px solid var(--highlight);
+    transition: background-color 0.3s; /* Suaviza a transição */
+}
+
+/* Ajustes do header para alteração de tema */
+body.light-mode .header {
+    background-color: var(--background-light);
+}
+
+body.dark-mode .header {
+    background-color: var(--background-dark);
 }
 
 .language-switcher button {
@@ -100,7 +114,7 @@ body.dark-mode .language-switcher button {
     background: none;
     font-size: 20px;
     cursor: pointer;
-    padding: 0;
+    padding: 5px;
 }
 
 .content {
@@ -132,6 +146,7 @@ body.dark-mode .language-switcher button {
     padding: 10px;
     background-color: transparent; /* Fundo do footer transparente */
     border-top: 1px solid var(--highlight);
+    margin-top: auto; /* Garante que o footer seja empurrado para o final da tela */
 }
 
 .footer p {
@@ -194,11 +209,16 @@ body.dark-mode .footer p {
         z-index: 1000;
     }
 
+    .theme-btn {
+        font-size: 16px; /* Ajusta ainda mais para telas menores */
+    }
+
     .content {
         flex-direction: column; /* Organiza imagem e texto em coluna */
         align-items: center;
         justify-content: flex-start;
         padding-top: 60px; /* Para não sobrepor o cabeçalho */
+        padding-bottom: 60px; /* Garante que o conteúdo não se sobreponha ao footer */
         text-align: center;
     }
 
@@ -217,9 +237,11 @@ body.dark-mode .footer p {
 
     /* Ajuste para a parte inferior (footer) em telas menores */
     .footer {
-        padding: 10px;
-        font-size: 12px;
-        margin-top: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
     }
 
     .footer p {
