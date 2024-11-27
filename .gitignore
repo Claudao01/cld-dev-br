@@ -1,6 +1,7 @@
-# Ignorar a pasta "_old" e "_log"
+# Ignorar pastas
 _old/
 _log/
+.compactados/
 
 # Ignorar arquivos do Git
 .gitignore

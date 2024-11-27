@@ -49,16 +49,16 @@ yearSpan.textContent = currentYear;
 // Função para atualizar o logo dependendo do tema
 function updateLogo() {
     const logoPath = body.classList.contains("dark-mode") ? 
-        "assets/img/logo/logo-cld-dark-mode.png" : 
-        "assets/img/logo/logo-cld-light-mode.png";
+        "assets/images/logo/logo-cld-dark-mode.png" : 
+        "assets/images/logo/logo-cld-light-mode.png";
     logoImg.src = logoPath;
 }
 
 // Função para atualizar o favicon dependendo do tema
 function updateFavicon() {
     const faviconPath = body.classList.contains("dark-mode") ? 
-        "assets/img/icon/favicon-dark-mode.png" : 
-        "assets/img/icon/favicon-light-mode.png";
+        "assets/images/icon/favicon-dark-mode.png" : 
+        "assets/images/icon/favicon-light-mode.png";
     favicon.href = faviconPath;
 }
 
