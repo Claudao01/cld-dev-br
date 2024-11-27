@@ -10,7 +10,6 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Cabeçalho -->
     <header class="header">
         <div class="language-switcher">
             <button id="lang-br" class="flag-btn" title="Português (Brasil)">
@@ -26,7 +25,6 @@
         <button id="theme-switch" class="theme-btn" title="Alternar Tema">🌙</button>
     </header>
 
-    <!-- Conteúdo principal -->
     <main class="content">
         <div class="construction-container">
             <img id="logo-img" src="assets/img/logo/logo-cld-light-mode.png" alt="Logo" class="logo-img">
@@ -34,7 +32,6 @@
         </div>
     </main>
 
-    <!-- Rodapé -->
     <footer class="footer">
         <p id="footer-text"><span id="year">2024</span> © Claudão. Todos os direitos reservados.</p>
         <p>

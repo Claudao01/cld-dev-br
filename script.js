@@ -23,19 +23,19 @@ const translations = {
         title: "🚧 Em construção",
         construction: "Em construção",
         footer: "© Claudão. Todos os direitos reservados.",
-        tooltip: "Alterar para português do Brasil?"
+        themeTooltip: "Alternar Tema",
     },
     us: {
         title: "🚧 Under construction",
         construction: "Under construction",
         footer: "© Claudão. All rights reserved.",
-        tooltip: "Alterar para inglês?"
+        themeTooltip: "Switch Theme",
     },
     es: {
         title: "🚧 En construcción",
         construction: "En construcción",
         footer: "© Claudão. Todos los derechos reservados.",
-        tooltip: "Alterar para espanhol?"
+        themeTooltip: "Cambiar Tema",
     },
 };
 
@@ -91,8 +91,11 @@ Object.keys(langButtons).forEach((lang) => {
         document.title = translation.title;
         constructionText.textContent = translation.construction;
         
-        // Atualizar rodapé com ano na posição correta
+        // Atualizar rodapé com ano e mensagem de direitos
         footerText.innerHTML = `${currentYear} ${translation.footer}`;
+
+        // Atualiza o tooltip do botão de tema
+        themeSwitch.title = translation.themeTooltip;
 
         // Alterar estilo das bandeiras
         Object.keys(flagButtons).forEach((key) => {

@@ -1,2 +1,38 @@
-# Auto detect text files and perform LF normalization
+# Normalize automaticamente arquivos de texto para LF (Line Feed),
+# independentemente do sistema operacional.
 * text=auto
+
+# Especifica que arquivos PNG e JPG devem ser tratados como binários.
+# Isso impede que o Git tente normalizar ou calcular diferenças (diff).
+*.png binary
+*.jpg binary
+
+# Força o GitHub Linguist a classificar arquivos .js como "JavaScript".
+*.js linguist-language=JavaScript
+
+# Identifica a pasta 'docs/' como documentação para o GitHub Linguist.
+docs/* linguist-documentation
+
+# Define comportamento especial para outros tipos de arquivos:
+
+# Ignora diferenças em arquivos minificados (.min.js e .min.css).
+# Útil para evitar poluição visual nas alterações (diffs).
+*.min.js -diff
+*.min.css -diff
+
+# Marca arquivos CSS para mesclagem baseada em união,
+# útil em colaborações para evitar conflitos frequentes.
+*.css merge=union
+
+# Opcional: Ignora mudanças de permissão nos arquivos.
+# Útil em projetos que transitam entre diferentes sistemas operacionais.
+* -crlf
+
+# Opcional: Configura arquivos de fontes (fonts) como binários.
+*.woff binary
+*.woff2 binary
+*.ttf binary
+
+# Configurações para arquivos PHP:
+# Trata arquivos PHP como texto para normalização de EOL.
+*.php text
