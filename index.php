@@ -12,17 +12,14 @@
 <body>
     <header class="header">
         <div class="language-switcher">
-            <button id="lang-br" class="flag-btn" title="Português (Brasil)">
-                <img src="assets/img/flags/pt-br.png" alt="Português (Brasil)" class="flag-icon">
-            </button>
-            <button id="lang-us" class="flag-btn" title="English (United States)">
-                <img src="assets/img/flags/en-us.png" alt="English (United States)" class="flag-icon">
-            </button>
-            <button id="lang-es" class="flag-btn" title="Español (España)">
-                <img src="assets/img/flags/es-es.png" alt="Español (España)" class="flag-icon">
-            </button>
+            <img id="lang-br" src="assets/img/flags/pt-br.png" alt="Português" data-lang="br" />
+            <img id="lang-us" src="assets/img/flags/en-us.png" alt="English" data-lang="us" />
+            <img id="lang-es" src="assets/img/flags/es-es.png" alt="Español" data-lang="es" />
         </div>
-        <button id="theme-switch" class="theme-btn" title="Alternar Tema">🌙</button>
+        <button id="theme-switch" class="theme-btn">
+            🌙
+            <span class="tooltip">Alterar tema</span>
+        </button>
     </header>
 
     <main class="content">

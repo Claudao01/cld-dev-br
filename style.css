@@ -4,7 +4,7 @@
     --background-light: #F8F8FF; /* Ghost white */
     --background-dark: #212121; /* Raisin black */
     --details: #bada55;
-    --highlight: #8bc34a;
+    --details-highlight: #8bc34a;
 }
 
 body, html {
@@ -38,7 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    border-bottom: 1px solid var(--highlight);
+    border-bottom: 1px solid var(--details);
     transition: background-color 0.3s; /* Suaviza a transição */
 }
 
@@ -51,32 +51,81 @@ body.dark-mode .header {
     background-color: var(--background-dark);
 }
 
-.language-switcher button {
-    border: none;
+/* Configuração do tooltip padrão */
+.tooltip {
+    background-color: var(--background-light);
+    border: 1px solid var(--details);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+    font-size: 12px;
+    max-width: 200px;
+    padding: 5px 10px;
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* Tooltip no tema escuro */
+body.dark-mode .tooltip {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* Mostrar o tooltip */
+.tooltip.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Esconder o tooltip */
+.tooltip.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+/* Alinhamento do botão */
+.language-switcher img {
     background: none;
-    font-size: 16px; /* Definindo tamanho fixo das bandeiras */
+    border: none;
     cursor: pointer;
-    transition: opacity 0.3s;
-    padding: 0;
+    font-size: 16px; /* Definindo tamanho fixo das bandeiras */
+    max-width: 32px;
     opacity: 0.5; /* Opacidade de 50% por padrão */
+    padding: 0;
+    position: relative; /* Necessário para o posicionamento correto do tooltip */
+    transition: opacity 0.3s;
 }
 
 /* Quando o mouse passa por cima das bandeiras */
-.language-switcher button:hover {
+.language-switcher img:hover {
     opacity: 0.75; /* Aumenta para 75% quando "hover" em bandeira não selecionada */
 }
 
+/* Para garantir que o tooltip não ultrapasse a borda esquerda ou direita da tela */
+.language-switcher img:hover + .tooltip, .theme-btn:hover + .tooltip {
+    max-width: calc(100% - 20px); /* Impede que o tooltip ultrapasse a borda da tela */
+}
+
 /* Quando o idioma está selecionado */
-.language-switcher button.selected {
+.language-switcher img.selected {
     opacity: 1; /* 100% de opacidade para a bandeira selecionada */
 }
 
 /* Ajustes do tema */
-body.light-mode .language-switcher button {
+body.light-mode .language-switcher img {
     color: var(--text-light);  /* Cor das bandeiras no tema claro */
 }
 
-body.dark-mode .language-switcher button {
+body.dark-mode .language-switcher img {
     color: var(--text-dark);  /* Cor das bandeiras no tema escuro */
 }
 
@@ -89,32 +138,19 @@ body.dark-mode .language-switcher button {
     opacity: 1;
 }
 
-.language-switcher .tooltip {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0s 0.3s;
-}
-
-.language-switcher button:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
-}
-
 .theme-btn {
     border: none;
     background: none;
     font-size: 20px;
     cursor: pointer;
     padding: 5px;
+}
+
+/* Ajuste do tooltip no botão de troca de tema */
+.theme-btn:hover + .tooltip {
+    top: calc(100% + 5px); /* Exibe o tooltip abaixo do botão */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
 }
 
 .content {
@@ -145,7 +181,7 @@ body.dark-mode .language-switcher button {
     text-align: center;
     padding: 10px;
     background-color: transparent; /* Fundo do footer transparente */
-    border-top: 1px solid var(--highlight);
+    border-top: 1px solid var(--details);
     margin-top: auto; /* Garante que o footer seja empurrado para o final da tela */
 }
 
@@ -160,12 +196,13 @@ body.dark-mode .footer p {
 }
 
 .footer .link {
-    color: var(--highlight);
+    color: var(--details);
     text-decoration: none;
 }
 
 .footer .link:hover {
-    text-decoration: underline;
+    color: var(--details-highlight);
+    text-decoration: none;
 }
 
 /* Telas maiores (largura acima de 1366px) */

@@ -24,18 +24,21 @@ const translations = {
         construction: "Em construção",
         footer: "© Claudão. Todos os direitos reservados.",
         themeTooltip: "Alternar Tema",
+        langTooltip: "Português", // Nome do idioma
     },
     us: {
         title: "🚧 Under construction",
         construction: "Under construction",
         footer: "© Claudão. All rights reserved.",
         themeTooltip: "Switch Theme",
+        langTooltip: "English", // Nome do idioma
     },
     es: {
         title: "🚧 En construcción",
         construction: "En construcción",
         footer: "© Claudão. Todos los derechos reservados.",
         themeTooltip: "Cambiar Tema",
+        langTooltip: "Español", // Nome do idioma
     },
 };
 
@@ -116,3 +119,72 @@ Object.keys(flagButtons).forEach((key) => {
         flagButtons[key].classList.add("selected");
     }
 });
+
+// Função para criar e exibir o tooltip
+function showTooltip(element, message) {
+    // Remove tooltips existentes antes de criar um novo
+    const existingTooltip = document.querySelector('.tooltip');
+    if (existingTooltip) existingTooltip.remove();
+
+    // Cria o elemento tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip show';
+    tooltip.textContent = message;
+    document.body.appendChild(tooltip);
+
+    // Adiciona o evento de movimento do mouse para o tooltip seguir o cursor
+    element.addEventListener('mousemove', (e) => {
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
+        
+        // Calcula a posição do tooltip em tempo real
+        let left = e.pageX + 10; // 10px de distância do mouse
+        let top = e.pageY + 20;  // 20px de distância do mouse
+
+        // Impede que o tooltip ultrapasse a borda da página (horizontal)
+        if (left + tooltipWidth > window.innerWidth) {
+            left = window.innerWidth - tooltipWidth - 10;
+        }
+
+        // Impede que o tooltip ultrapasse a borda da página (vertical)
+        if (top + tooltipHeight > window.innerHeight) {
+            top = window.innerHeight - tooltipHeight - 10;
+        }
+
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+    });
+
+    // Calcula a posição do tooltip
+    tooltip.style.left = `${element.getBoundingClientRect().left + 10}px`;
+    tooltip.style.top = `${element.getBoundingClientRect().bottom + 20}px`; // Coloca o tooltip logo abaixo
+}
+
+// Atualiza o tooltip dinâmico para cada botão
+[...Object.values(flagButtons), themeSwitch].forEach((button) => {
+    button.addEventListener('mouseenter', (event) => {
+        let tooltipMessage;
+
+        // Verifica se o botão é de idioma (bandeira)
+        if (event.target.dataset.lang) {
+            const lang = event.target.dataset.lang;
+            tooltipMessage = translations[lang]?.langTooltip || ''; // Mensagem de tooltip para as bandeiras
+        } else if (event.target === themeSwitch) {
+            // Para o botão de troca de tema, usamos o conteúdo do título (já traduzido)
+            tooltipMessage = themeSwitch.title || 'Alterar tema'; // Mensagem para o botão de troca de tema
+        }
+
+        // Exibe o tooltip com a mensagem correta
+        if (tooltipMessage) {
+            showTooltip(event.target, tooltipMessage);
+        }
+    });
+
+    button.addEventListener('mouseleave', hideTooltip);
+});
+
+// Função para remover o tooltip
+function hideTooltip() {
+    const tooltip = document.querySelector('.tooltip');
+    if (tooltip) tooltip.remove();
+}
