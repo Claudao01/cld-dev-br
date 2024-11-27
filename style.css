@@ -199,16 +199,6 @@ body.dark-mode .footer p {
         display: block; /* Organiza a tela para um layout em coluna */
     }
 
-    .header {
-        position: fixed; /* Fixar os botões do header */
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: var(--background-light); /* Fundo branco ou claro */
-        padding: 10px 20px;
-        z-index: 1000;
-    }
-
     .theme-btn {
         font-size: 16px; /* Ajusta ainda mais para telas menores */
     }
