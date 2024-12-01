@@ -24,21 +24,21 @@ const translations = {
         construction: "Em construção",
         footer: "© Claudão. Todos os direitos reservados.",
         themeTooltip: "Alternar Tema",
-        langTooltip: "Português", // Nome do idioma
+        langTooltip: "Português",
     },
     us: {
         title: "🚧 Under construction",
         construction: "Under construction",
         footer: "© Claudão. All rights reserved.",
         themeTooltip: "Switch Theme",
-        langTooltip: "English", // Nome do idioma
+        langTooltip: "English",
     },
     es: {
         title: "🚧 En construcción",
         construction: "En construcción",
         footer: "© Claudão. Todos los derechos reservados.",
         themeTooltip: "Cambiar Tema",
-        langTooltip: "Español", // Nome do idioma
+        langTooltip: "Español",
     },
 };
 
@@ -66,10 +66,10 @@ function updateFavicon() {
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 if (prefersDark) {
     body.classList.add("dark-mode");
-    themeSwitch.textContent = "🌞";
+    themeSwitch.textContent = "Light 🌞";
 } else {
     body.classList.add("light-mode");
-    themeSwitch.textContent = "🌙";
+    themeSwitch.textContent = "Dark 🌙";
 }
 
 // Atualiza o logo e favicon conforme o tema atual
@@ -80,8 +80,8 @@ updateFavicon();
 themeSwitch.addEventListener("click", () => {
     const isDarkMode = body.classList.toggle("dark-mode");
     body.classList.toggle("light-mode", !isDarkMode);
-    themeSwitch.textContent = isDarkMode ? "🌞" : "🌙";
-    
+    themeSwitch.textContent = isDarkMode ? "Light 🌞" : "Dark 🌙";
+
     // Atualiza o logo e favicon conforme o tema
     updateLogo();
     updateFavicon();

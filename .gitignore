@@ -2,6 +2,12 @@
 _old/
 _log/
 .compactados/
+.scripts/
+assets/css/deprecated/
+assets/js/deprecated/
+
+# Ignorar arquivos específicos
+
 
 # Ignorar arquivos do Git
 .gitignore
